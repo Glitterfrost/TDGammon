@@ -20,9 +20,9 @@ class ApproximateAgent():
                 value_next =  self.learned_agent(torch.tensor(next_state).unsqueeze(0))
                 action_values.append(value_next.item())
         if self.player_id == MAX_AGENT:
-            action = legal_actions[np.argmax(action_values)]
+            best_action = legal_actions[np.argmax(action_values)]
         else:
-            action = legal_actions[np.argmin(action_values)]
+            best_action = legal_actions[np.argmin(action_values)]
         if best_action is None:
             best_action = random.choice(legal_actions)
         return best_action
